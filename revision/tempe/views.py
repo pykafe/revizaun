@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView
-from  .models import District, SubDistrict, Suco
+from  .models import Country, District, SubDistrict, Suco
 
 
 class Index(TemplateView):
@@ -9,6 +9,7 @@ class Index(TemplateView):
         ''' Add a list of subcategories by category to the context '''
 
         context = super(Index, self).get_context_data(*args, **kwargs)
+        context['countries'] = Country.objects.all()
         context['districts'] = District.objects.all()
         context['subdistricts'] = SubDistrict.objects.all()
         context['sucos'] = Suco.objects.all()

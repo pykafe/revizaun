@@ -5,8 +5,16 @@ from django.db import models
 # Create your models here.
 
 
+class Country(models.Model):
+    name = models.CharField(max_length=25)
+
+    def __unicode__(self):
+        return 'Country {}'.format(self.name)
+
+
 class District(models.Model):
     name = models.CharField(max_length=25)
+    country = models.ForeignKey(Country, blank=False, null=False)
 
     def __unicode__(self):
         return 'District {}'.format(self.name)

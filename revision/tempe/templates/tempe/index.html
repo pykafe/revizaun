@@ -1,4 +1,12 @@
 Hello World
+<h1>Nasaun</h1>
+{% for country in countries %}
+<div>
+    {{ country.name }}
+    ({{ country.district_set.count }} districts )
+</div>
+{% endfor %}
+
 <h1>Distritu</h1>
 {% for district in districts %}
 <div>
