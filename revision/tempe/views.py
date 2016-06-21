@@ -12,4 +12,5 @@ class Index(TemplateView):
         context['districts'] = District.objects.all()
         context['subdistricts'] = SubDistrict.objects.all()
         context['sucos'] = Suco.objects.all()
+        context['aldeias'] = Aldeia.objects.all()
         return context
