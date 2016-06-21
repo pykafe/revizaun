@@ -2,9 +2,15 @@ Hello World
 <h1>Distritu</h1>
 {% for district in districts %}
 <div>
-    {{ district.name }}
-    {% for district in district.subdistrict_set.all %}
-        {{district.name}}
+    <h2>Distritu {{ district.name }}</h2>
+    {% for subdistrict in district.subdistrict_set.all %}
+        <h3>SubDistritu {{ subdistrict.name}}</h3>
+        {% for suco in subdistrict.suco_set.all %}
+            <h4>Suco {{ suco.name}}</h4>
+            {% for aldeia in suco.aldeia_set.all %}
+                <h5>Aldeia {{ aldeia.name}}</h5>
+            {%endfor%}
+        {%endfor%}
     {%endfor%}
 </div>
 {% endfor %}
@@ -15,9 +21,6 @@ Hello World
 <div>
     {{ subdistrict.name }}
     ({{ subdistrict.district.name }})
-    {% for subdistrict in subdistrict.suco_set.all %}
-        {{subdistrict.name}}
-    {%endfor%}
 </div>
 {% endfor %}
 
