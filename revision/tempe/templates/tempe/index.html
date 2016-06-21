@@ -9,6 +9,9 @@ Hello World
             <h4>Suco {{ suco.name}}</h4>
             {% for aldeia in suco.aldeia_set.all %}
                 <h5>Aldeia {{ aldeia.name}}</h5>
+                {% for visitor in aldeia.visitor_set.all %}
+                    {{visitor.name}}
+                {%endfor%}
             {%endfor%}
         {%endfor%}
     {%endfor%}

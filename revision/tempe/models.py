@@ -34,3 +34,9 @@ class Aldeia(models.Model):
 
     def __unicode__(self):
         return 'Aldeia {}'.format(self.name)
+
+
+class Visitor(models.Model):
+    name = models.CharField(max_length=25)
+    nationality = models.CharField(max_length=25)
+    aldeia = models.ManyToManyField(Aldeia, blank=False, null=False)
