@@ -14,3 +14,20 @@ Hello World
     ({{ subdistrict.district.name }})
 </div>
 {% endfor %}
+
+<h1>Suco</h1>
+{% for suco in sucos %}
+<div>
+    {{ suco.name }}
+    ({{ suco.subdistrict.district.name }})
+</div>
+{% endfor %}
+
+<h1>Aldeia</h1>
+{% for aldeia in aldeias %}
+<div>
+    {{ aldeia.name }}
+    ({{ aldeia.suco.subdistrict.district.name }})
+</div>
+{% endfor %}
+

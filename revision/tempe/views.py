@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView
-from .models import District, SubDistrict, Suco
+from .models import District, SubDistrict, Suco, Aldeia
 
 
 class Index(TemplateView):
@@ -12,4 +12,5 @@ class Index(TemplateView):
         context['districts'] = District.objects.all()
         context['subdistricts'] = SubDistrict.objects.all()
         context['sucos'] = Suco.objects.all()
+        context['aldeias'] = Aldeia.objects.all()
         return context
