@@ -3,14 +3,39 @@ Hello World
 {% for district in districts %}
 <div>
     {{ district.name }}
-    ({{ district.subdistrict_set.count }} subdistricts )
+    {% for district in district.subdistrict_set.all %}
+        {{district.name}}
+    {%endfor%}
 </div>
 {% endfor %}
+
 
 <h1>SubDistritu</h1>
 {% for subdistrict in subdistricts %}
 <div>
     {{ subdistrict.name }}
     ({{ subdistrict.district.name }})
+    {% for subdistrict in subdistrict.suco_set.all %}
+        {{subdistrict.name}}
+    {%endfor%}
+</div>
+{% endfor %}
+
+<h1>Suco</h1>
+{% for suco in sucos %}
+<div>
+    {{ suco.name }}
+    ({{ suco.subdistrict.name }})
+    {% for suco in suco.aldeia_set.all %}
+        {{suco.name}}
+    {%endfor%}
+</div>
+{% endfor %}
+
+<h1>Aldeia</h1>
+{% for aldeia in aldeias %}
+<div>
+    {{ aldeia.name }}
+    ({{ aldeia.suco.name }})
 </div>
 {% endfor %}
