@@ -1,5 +1,5 @@
 from django.views.generic.base import TemplateView
-from  .models import District, SubDistrict, Suco
+from .models import District, SubDistrict, Suco, Aldeia
 
 
 class Index(TemplateView):
