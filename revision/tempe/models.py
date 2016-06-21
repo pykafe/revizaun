@@ -40,3 +40,6 @@ class Visitor(models.Model):
     name = models.CharField(max_length=25)
     nationality = models.CharField(max_length=25)
     aldeia = models.ManyToManyField(Aldeia, blank=False, null=False)
+
+    def __unicode__(self):
+        return 'Name {} Nasionalidade{}'.format(self.name, self.nationality)
