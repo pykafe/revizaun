@@ -11,13 +11,16 @@ Hello World
                 <h5>Aldeia {{ aldeia.name}}</h5>
                 {% for visitor in aldeia.visitor_set.all %}
                     {{visitor.name}}
-                {%endfor%}
+                {% endfor %}
             {%endfor%}
         {%endfor%}
     {%endfor%}
 </div>
 {% endfor %}
 
+{% for visitor in visitors %}
+    {{visitor.name}}
+{% endfor %}
 
 <h1>SubDistritu</h1>
 {% for subdistrict in subdistricts %}
