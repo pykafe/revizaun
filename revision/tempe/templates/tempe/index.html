@@ -7,34 +7,13 @@
         <td><b>Sub-Distrito</b><td>
         <td><b>Distrito</b><td>
     </tr>
+
+    {% for aldeia in aldeias %}
     <tr>
-        <td>
-            {% for aldeia in aldeias %}
-            <div>
-                {{ aldeia.name }}
-            </div>
-            {% endfor %}
-        <td>
-        <td>
-            {% for suco in sucos %}
-            <div>
-                {{ suco.name }}
-            </div>
-            {% endfor %}
-        <td>
-        <td>
-            {% for subdistrict in subdistricts %}
-            <div>
-                {{ subdistrict.name }}
-            </div>
-            {% endfor %}
-        <td>
-        <td>
-            {% for district in districts %}
-            <div>
-                {{ district.name }}
-            </div>
-            {% endfor %}
-        <td>
+        <td> {{ aldeia.name }} <td>
+        <td> {{ aldeia.suco.name }} <td>
+        <td> {{ aldeia.suco.subdistrict.name }} <td>
+        <td> {{ aldeia.suco.subdistrict.district.name }} <td>
     </tr>
+    {% endfor %}
 <table>
