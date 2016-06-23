@@ -1,0 +1,23 @@
+<revision>
+    <form onsubmit={add}>
+        <input name="input">
+        <button>add District</button>
+    </form>
+
+    <div each={ revisions }>
+        { name }
+    </div>
+
+    var self = this
+
+    self.revisions = []
+
+    add(e){
+        if(self.input.value){
+            var revisaun = {'name': self.input.value}
+            self.revisions.push(revisaun)
+            self.input.value = ''
+            }
+    }
+
+</revision>

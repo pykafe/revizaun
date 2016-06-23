@@ -23,3 +23,22 @@
     </tr>
     {% endfor %}
 <table>
+
+{% load static %}
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <revision></revision>
+        <script type='riot/tag'>{% include 'tempe/revision_tag.html' %}</script>
+        <script src="{% static 'riot/riot+compiler.min.js' %}"></script>
+        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+
+        <script>
+            riot.mount('revision')
+        </script>
+    </body>
+</html>
+
