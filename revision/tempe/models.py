@@ -39,7 +39,7 @@ class Aldeia(models.Model):
 class Visitor(models.Model):
     name = models.CharField(max_length=25)
     nationality = models.CharField(max_length=25)
-    aldeia = models.ManyToManyField(Aldeia)
+    aldeia = models.ManyToManyField(Aldeia, related_name="visitors")
 
     def __unicode__(self):
         return 'Name {} Nasionalidade{}'.format(self.name, self.nationality)
