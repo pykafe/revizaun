@@ -89,3 +89,4 @@ ENV/
 .ropeproject
 
 revision/db.sqlite3
+revision/bower_components
