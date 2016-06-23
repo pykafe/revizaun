@@ -6,6 +6,8 @@
         <td><b>Suku</b><td>
         <td><b>Sub-Distrito</b><td>
         <td><b>Distrito</b><td>
+        <td><b>Visitor</b><td>
+        <td><b>Nasionalidade</b><td>
     </tr>
 
     {% for aldeia in aldeias %}
@@ -14,6 +16,10 @@
         <td> {{ aldeia.suco.name }} <td>
         <td> {{ aldeia.suco.subdistrict.name }} <td>
         <td> {{ aldeia.suco.subdistrict.district.name }} <td>
+        {% for visitor in aldeia.visitors.all %}
+            <td>{{visitor.name}}</td>
+            <td>{{visitor.nationality}}</td>
+        {%endfor%}   
     </tr>
     {% endfor %}
 <table>
