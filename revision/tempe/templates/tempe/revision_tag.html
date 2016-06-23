@@ -12,11 +12,21 @@
 
     self.revisions = []
 
+    self.on('mount', function(){
+        $.get('/api/districts/', function(data){
+            self.revisions = data.results
+            self.update()
+        })
+    })
     add(e){
         if(self.input.value){
             var revisaun = {'name': self.input.value}
-            self.revisions.push(revisaun)
-            self.input.value = ''
+            $.post('/api/districts/', revisaun, function(data){
+                self.revisions.push(data)
+                self.input.value = ''
+                self.update()
+
+            })
             }
     }
 
