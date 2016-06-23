@@ -1,18 +1,19 @@
 <h1>Hello World</h1>
-{% for district in districts %}
-<div>
-    <h1>Distritu {{ district.name }}</h1>
-    {% for subdistrict in district.subdistrict_set.all %}
-        <h3>SubDistritu {{ subdistrict.name}}</h3>
-        {% for suco in subdistrict.suco_set.all %}
-            <h4>Suco {{ suco.name}}</h4>
-            {% for aldeia in suco.aldeia_set.all %}
-                <h5>Aldeia {{ aldeia.name}}</h5>
-                {% for visitor in aldeia.visitor_set.all %}
-                    {{visitor.name}}
-                {%endfor%}
-            {%endfor%}
-        {%endfor%}
-    {%endfor%}
-</div>
-{% endfor %}
+
+<table>
+    <tr>
+        <td><b>Aldeia</b><td>
+        <td><b>Suku</b><td>
+        <td><b>Sub-Distrito</b><td>
+        <td><b>Distrito</b><td>
+    </tr>
+
+    {% for aldeia in aldeias %}
+    <tr>
+        <td> {{ aldeia.name }} <td>
+        <td> {{ aldeia.suco.name }} <td>
+        <td> {{ aldeia.suco.subdistrict.name }} <td>
+        <td> {{ aldeia.suco.subdistrict.district.name }} <td>
+    </tr>
+    {% endfor %}
+<table>

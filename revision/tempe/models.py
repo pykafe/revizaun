@@ -14,7 +14,7 @@ class District(models.Model):
 
 class SubDistrict(models.Model):
     name = models.CharField(max_length=25)
-    district = models.ForeignKey(District, blank=False, null=False)
+    district = models.ForeignKey(District, blank=False, null=False, related_name='subdistricts')
 
     def __unicode__(self):
         return 'Sub-district {}'.format(self.name)
@@ -22,26 +22,24 @@ class SubDistrict(models.Model):
 
 class Suco(models.Model):
     name = models.CharField(max_length=25)
-    subdistrict = models.ForeignKey(SubDistrict, blank=False, null=False)
+    subdistrict = models.ForeignKey(SubDistrict, blank=False, null=False, related_name='sucos')
 
     def __unicode__(self):
         return 'Suco {}'.format(self.name)
-    
-    
+
+
 class Aldeia(models.Model):
     name = models.CharField(max_length=25)
-    suco = models.ForeignKey(Suco, blank=False, null=False)
+    suco = models.ForeignKey(Suco, blank=False, null=False, related_name='aldeias')
 
     def __unicode__(self):
         return 'Aldeia {}'.format(self.name)
-    
-    
+
+
 class Visitor(models.Model):
     name = models.CharField(max_length=25)
-    nacionalidade = models.CharField(max_length=25)
-    aldeia = models.ManyToManyField(Aldeia, blank=False, null=False)
+    nationality = models.CharField(max_length=25)
+    aldeias = models.ManyToManyField(Aldeia, related_name='visitors')
 
     def __unicode__(self):
-        return 'Visitor {}'.format(self.name)
-
-
+        return 'Name {} Nasionalidade{}'.format(self.name, self.nationality)
