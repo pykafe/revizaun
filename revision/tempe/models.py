@@ -14,7 +14,7 @@ class District(models.Model):
 
 class SubDistrict(models.Model):
     name = models.CharField(max_length=25)
-    district = models.ForeignKey(District, blank=False, null=False)
+    district = models.ForeignKey(District, blank=False, null=False, related_name="subdistrict")
 
     def __unicode__(self):
         return 'Sub-district {}'.format(self.name)

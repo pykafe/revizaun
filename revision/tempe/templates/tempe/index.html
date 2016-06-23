@@ -19,7 +19,7 @@ Hello World
 {% for suco in sucos %}
 <div>
     {{ suco.name }}
-    ({{ suco.subdistrict.district.name }})
+    ({{ suco.subdistrict.name }})
 </div>
 {% endfor %}
 
@@ -27,7 +27,7 @@ Hello World
 {% for aldeia in aldeias %}
 <div>
     {{ aldeia.name }}
-    ({{ aldeia.suco.subdistrict.district.name }})
+    ({{ aldeia.suco.name }})
 </div>
 {% endfor %}
 
