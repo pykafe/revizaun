@@ -26,3 +26,22 @@ class Suco(models.Model):
 
     def __unicode__(self):
         return 'Suco {}'.format(self.name)
+    
+    
+class Aldeia(models.Model):
+    name = models.CharField(max_length=25)
+    suco = models.ForeignKey(Suco, blank=False, null=False)
+
+    def __unicode__(self):
+        return 'Aldeia {}'.format(self.name)
+    
+    
+class Visitor(models.Model):
+    name = models.CharField(max_length=25)
+    nacionalidade = models.CharField(max_length=25)
+    aldeia = models.ManyToManyField(Aldeia, blank=False, null=False)
+
+    def __unicode__(self):
+        return 'Visitor {}'.format(self.name)
+
+
