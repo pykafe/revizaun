@@ -1,0 +1,22 @@
+{
+  "name": "revision",
+  "homepage": "https://github.com/pykafe/revizaun",
+  "authors": [
+    "mariano <dedeus_mariano@yahoo.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "riot": "^2.4.1"
+  }
+}
