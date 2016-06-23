@@ -1,50 +1,40 @@
-Hello World
-<h1>Distritu</h1>
-{% for district in districts %}
-<div>
-    <h2>Distritu {{ district.name }}</h2>
-    {% for subdistrict in district.subdistricts.all %}
-        <h3>SubDistritu {{ subdistrict.name}}</h3>
-        {% for suco in subdistrict.sucos.all %}
-            <h4>Suco {{ suco.name}}</h4>
-            {% for aldeia in suco.aldeias.all %}
-                <h5>Aldeia {{ aldeia.name}}</h5>
-                {% for visitor in aldeia.visitors.all %}
-                    {{visitor.name}}
-                {% endfor %}
-            {%endfor%}
-        {%endfor%}
-    {%endfor%}
-</div>
-{% endfor %}
+<h1>Hello World</h1>
 
-{% for visitor in visitors %}
-    {{visitor.name}}
-{% endfor %}
-
-<h1>SubDistritu</h1>
-{% for subdistrict in subdistricts %}
-<div>
-    {{ subdistrict.name }}
-    ({{ subdistrict.district.name }})
-</div>
-{% endfor %}
-
-<h1>Suco</h1>
-{% for suco in sucos %}
-<div>
-    {{ suco.name }}
-    ({{ suco.subdistrict.name }})
-    {% for suco in suco.aldeia_set.all %}
-        {{suco.name}}
-    {%endfor%}
-</div>
-{% endfor %}
-
-<h1>Aldeia</h1>
-{% for aldeia in aldeias %}
-<div>
-    {{ aldeia.name }}
-    ({{ aldeia.suco.name }})
-</div>
-{% endfor %}
+<table>
+    <tr>
+        <td><b>Aldeia</b><td>
+        <td><b>Suku</b><td>
+        <td><b>Sub-Distrito</b><td>
+        <td><b>Distrito</b><td>
+    </tr>
+    <tr>
+        <td>
+            {% for aldeia in aldeias %}
+            <div>
+                {{ aldeia.name }}
+            </div>
+            {% endfor %}
+        <td>
+        <td>
+            {% for suco in sucos %}
+            <div>
+                {{ suco.name }}
+            </div>
+            {% endfor %}
+        <td>
+        <td>
+            {% for subdistrict in subdistricts %}
+            <div>
+                {{ subdistrict.name }}
+            </div>
+            {% endfor %}
+        <td>
+        <td>
+            {% for district in districts %}
+            <div>
+                {{ district.name }}
+            </div>
+            {% endfor %}
+        <td>
+    </tr>
+<table>
