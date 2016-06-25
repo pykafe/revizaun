@@ -1,0 +1,37 @@
+<visitor>
+
+    <form>
+        <input name="input">
+        <input type="input" id="input_visitor">
+        <select id="visitor">
+            <option each={aldeias} value={url} selected={name}>{name}</option>
+        </select>
+
+        <button onclick={add}>add visitor</button>
+    </form>
+
+
+    var self = this
+    self.visitors = []
+
+    self.on('mount', function(){
+        $.get('/api/aldeias/', function(data){
+            self.aldeias = data.results
+            self.update()
+        })
+    })
+
+    add(e){
+        alert('hello')
+        if(self.input.value){
+            var visitors = {'name': self.input.value, 'nationality': input_visitor.value, 'aldeias': visitor.value}
+            console.log(visitor.value)
+            $.post('/api/visitors/', visitors, function(data){
+                self.visitors.push(data)
+                self.input.value = ''
+                self.update()
+            })
+            }
+         }
+
+</visitor>

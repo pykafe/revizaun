@@ -10,6 +10,12 @@
      <suco>
     </suco>
 
+     <aldeia>
+    </aldeia>
+
+    <visitor>
+    </visitor>
+
 
     <table class="table table-condensed">
         <tr>
@@ -32,6 +38,12 @@
             </td>
             <td>
                 <p each="{districts}">{name }</p>
+            </td>
+            <td>
+                <p each="{visitors}">{nationality }</p>
+            </td>
+            <td>
+                <p each="{visitors}">{name }</p>
             </td>
 
         </tr>
@@ -68,12 +80,16 @@
         })
     })
 
-
+   self.on('mount', function(){
+        $.get('/api/visitors/', function(data){
+            self.visitors = data.results
+            self.update()
+        })
+    })
 
     add(e){
         if(self.input.value){
             var district = {'name': self.input.value}
-            console.log(e)
             $.post('/api/districts/', district, function(data){
                 self.districts.push(data)
                 self.input.value = ''

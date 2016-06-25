@@ -1,0 +1,35 @@
+<aldeia>
+
+    <form>
+        <input name="input">
+        <select id="aldeia">
+            <option each={sucos} value={url} selected={name}>{name}</option>
+        </select>
+
+        <button onclick={add}>add aldeia</button>
+    </form>
+
+
+    var self = this
+    self.aldeias = []
+
+    self.on('mount', function(){
+        $.get('/api/sucos/', function(data){
+            self.sucos = data.results
+            self.update()
+        })
+    })
+
+    add(e){
+        if(self.input.value){
+            var aldeias = {'name': self.input.value, 'suco': aldeia.value}
+            console.log(aldeia.value)
+            $.post('/api/aldeias/', aldeias, function(data){
+                self.aldeias.push(data)
+                self.input.value = ''
+                self.update()
+            })
+            }
+         }
+
+</aldeia>
