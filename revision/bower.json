@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "jquery": "^3.0.0",
-    "riot": "^2.4.1"
+    "riot": "^2.4.1",
+    "bootstrap": "^3.3.6"
   }
 }
