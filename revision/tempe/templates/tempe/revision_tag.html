@@ -1,28 +1,76 @@
 <revision>
-    <form onsubmit={add}>
+    <form>
         <input name="input">
-        <button>add District</button>
+        <button onclick={add}>add District</button>
     </form>
+    <subdistrict>
+    </subdistrict>
 
-    <div each={ revisions }>
-        { name }
-    </div>
+    <table class="table table-condensed">
+        <tr>
+            <td><b>Aldeia</b></td>
+            <td><b>Suku</b></td>
+            <td><b>Sub-Distrito</b></td>
+            <td><b>Distrito</b></td>
+            <td><b>Nasionalidade</b></td>
+            <td><b>Visitor</b></td>
+        </tr>
+        <tr>
+            <td>
+                <p each="{aldeias}">{name }</p>
+            </td>
+            <td>
+                <p each="{sucos}">{name }</p>
+            </td>
+             <td>
+                <p each="{subdistricts}">{name }</p>
+            </td>
+            <td>
+                <p each="{districts}">{name }</p>
+            </td>
+
+        </tr>
 
     var self = this
 
-    self.revisions = []
+    self.districts = []
 
     self.on('mount', function(){
         $.get('/api/districts/', function(data){
-            self.revisions = data.results
+            self.districts = data.results
             self.update()
         })
     })
+
+    self.on('mount', function(){
+        $.get('/api/subdistricts/', function(data){
+            self.subdistricts = data.results
+            self.update()
+        })
+    })
+
+    self.on('mount', function(){
+        $.get('/api/sucos/', function(data){
+            self.sucos = data.results
+            self.update()
+        })
+    })
+
+    self.on('mount', function(){
+        $.get('/api/aldeias/', function(data){
+            self.aldeias = data.results
+            self.update()
+        })
+    })
+
+
+
     add(e){
         if(self.input.value){
-            var revisaun = {'name': self.input.value}
-            $.post('/api/districts/', revisaun, function(data){
-                self.revisions.push(data)
+            var district = {'name': self.input.value}
+            console.log(e)
+            $.post('/api/districts/', district, function(data){
+                self.districts.push(data)
                 self.input.value = ''
                 self.update()
 
