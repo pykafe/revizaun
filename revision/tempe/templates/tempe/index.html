@@ -1,29 +1,3 @@
-<h1>Hello World</h1>
-
-<table>
-    <tr>
-        <td><b>Aldeia</b><td>
-        <td><b>Suku</b><td>
-        <td><b>Sub-Distrito</b><td>
-        <td><b>Distrito</b><td>
-        <td><b>Visitor</b><td>
-        <td><b>Nasionalidade</b><td>
-    </tr>
-
-    {% for aldeia in aldeias %}
-    <tr>
-        <td> {{ aldeia.name }} <td>
-        <td> {{ aldeia.suco.name }} <td>
-        <td> {{ aldeia.suco.subdistrict.name }} <td>
-        <td> {{ aldeia.suco.subdistrict.district.name }} <td>
-        {% for visitor in aldeia.visitors.all %}
-            <td>{{visitor.name}}</td>
-            <td>{{visitor.nationality}}</td>
-        {%endfor%}   
-    </tr>
-    {% endfor %}
-<table>
-
 {% load static %}
 
 <html>
@@ -32,14 +6,43 @@
             <link type="text/css" rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
     </head>
     <body>
-        <revision></revision>
-        <script type='riot/tag'>{% include 'tempe/revision_tag.html' %}</script>
-        <script src="{% static 'riot/riot+compiler.min.js' %}"></script>
-        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+        <div class="container">
 
-        <script>
-            riot.mount('revision')
-        </script>
+            <h1>Turistas</h1>
+
+            <table class="table table-condensed">
+                <tr>
+                    <td><b>Aldeia</b></td>
+                    <td><b>Suku</b></td>
+                    <td><b>Sub-Distrito</b></td>
+                    <td><b>Distrito</b></td>
+                    <td><b>Nasionalidade</b></td>
+                    <td><b>Visitor</b></td>
+                </tr>
+                {% for aldeia in aldeias %}
+                    <tr>
+                        <td> {{ aldeia.name }} </td>
+                        <td> {{ aldeia.suco.name }} </td>
+                        <td> {{ aldeia.suco.subdistrict.name }} </td>
+                        <td> {{ aldeia.suco.subdistrict.district.name }} </td>
+                        {% for visitor in aldeia.visitors.all %}
+                            <td>{{visitor.nationality}}</td>
+                            <td>{{visitor.name}}</td>
+                        {%endfor%}   
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <revision></revision>
+
+            <script type='riot/tag'>{% include 'tempe/revision_tag.html' %}</script>
+            <script src="{% static 'riot/riot+compiler.min.js' %}"></script>
+            <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+
+            <script>
+                riot.mount('revision')
+            </script>
+        </div>
     </body>
 </html>
 
