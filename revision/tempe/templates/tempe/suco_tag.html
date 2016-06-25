@@ -1,0 +1,35 @@
+<suco>
+
+    <form>
+        <input name="input">
+        <select id="suku">
+            <option each={subdistricts} value={url} selected={name}>{name}</option>
+        </select>
+
+        <button onclick={add}>add suco</button>
+    </form>
+
+
+    var self = this
+    self.sucos = []
+
+    self.on('mount', function(){
+        $.get('/api/subdistricts/', function(data){
+            self.subdistricts = data.results
+            self.update()
+        })
+    })
+
+    add(e){
+        if(self.input.value){
+            var sukus = {'name': self.input.value, 'subdistrict': suku.value}
+            console.log(suku.value)
+            $.post('/api/sucos/', sukus, function(data){
+                self.sucos.push(data)
+                self.input.value = ''
+                self.update()
+            })
+            }
+         }
+
+</suco>
