@@ -1,12 +1,12 @@
 <aldeia>
 
     <form>
-        <input name="input" placeholder="Aldeia">
-        <select id="aldeia">
+        <input name="input" class="form-control" placeholder="Aldeia">
+        <select id="aldeia" class="form-control">
             <option each={sucos} value={url} selected={name}>{name}</option>
         </select>
 
-        <button onclick={add}>add aldeia</button>
+        <button onclick={add} class="btn btn-default">add aldeia</button>
     </form>
 
 

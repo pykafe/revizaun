@@ -1,13 +1,13 @@
 <visitor>
 
     <form>
-        <input name="input" placeholder="Naran">
-        <input type="input" id="input_visitor" placeholder="Nasionalidade">
-        <select id="visitor">
+        <input name="input" class="form-control"  placeholder="Naran">
+        <input type="text" id="input_visitor" class="form-control" placeholder="Nasionalidade">
+        <select id="visitor" class="form-control">
             <option each={aldeias} value={url} selected={name}>{name}</option>
         </select>
 
-        <button onclick={add}>add visitor</button>
+        <button onclick={add} class="btn btn-default">add visitor</button>
     </form>
 
 
