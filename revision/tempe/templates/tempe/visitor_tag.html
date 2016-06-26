@@ -1,8 +1,8 @@
 <visitor>
 
     <form>
-        <input name="input">
-        <input type="input" id="input_visitor">
+        <input name="input" placeholder="Naran">
+        <input type="input" id="input_visitor" placeholder="Nasionalidade">
         <select id="visitor">
             <option each={aldeias} value={url} selected={name}>{name}</option>
         </select>
@@ -22,13 +22,13 @@
     })
 
     add(e){
-        alert('hello')
         if(self.input.value){
             var visitors = {'name': self.input.value, 'nationality': input_visitor.value, 'aldeias': visitor.value}
             console.log(visitor.value)
             $.post('/api/visitors/', visitors, function(data){
                 self.visitors.push(data)
                 self.input.value = ''
+                input_visitor.value = ''
                 self.update()
             })
             }
