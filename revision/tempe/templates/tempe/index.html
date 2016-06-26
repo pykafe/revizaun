@@ -25,13 +25,21 @@
                         <td> {{ aldeia.suco.name }} </td>
                         <td> {{ aldeia.suco.subdistrict.name }} </td>
                         <td> {{ aldeia.suco.subdistrict.district.name }} </td>
-                        {% for visitor in aldeia.visitors.all %}
-                            <td>{{visitor.nationality}}</td>
-                            <td>{{visitor.name}}</td>
-                        {%endfor%}   
+                        <td>
+                            {% for visitor in aldeia.visitors.all %}
+                                {{visitor.nationality}}<br>
+                            {%endfor%}   
+                        </td>
+                            <td>
+                            {% for visitor in aldeia.visitors.all %}
+                               {{visitor.name}}<br>
+                            {%endfor%}
+                        </td>
                     </tr>
                 {% endfor %}
             </table>
+            
+            <h1>Add Turista</h1>
 
             <revision></revision>
 
