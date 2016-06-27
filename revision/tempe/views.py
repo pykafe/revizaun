@@ -1,5 +1,4 @@
-from django.views.generic.base import TemplateView
-from  .models import District, SubDistrict, Suco, Aldeia, Visitor
+from .models import District, SubDistrict, Suco, Aldeia, Visitor
 from django.views.generic.edit import CreateView
 from django.core.urlresolvers import reverse_lazy
 
@@ -20,10 +19,3 @@ class Index(CreateView):
         context['aldeias'] = Aldeia.objects.all()
         context['visitors'] = Visitor.objects.all()
         return context
-    
-    def get_form(self, form_class):
-        form = super(Index, self).get_form(form_class)
-        form.fields['name']
-        return form
-    
-    
