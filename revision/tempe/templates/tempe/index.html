@@ -1,5 +1,9 @@
 <h1>Hello World</h1>
 
+{% for visitor in visitors %}
+    {{ visitor.name }}
+{% endfor %}
+
 <table>
     <tr>
         <td><b>Aldeia</b><td>
@@ -17,3 +21,18 @@
     </tr>
     {% endfor %}
 <table>
+
+
+<div>   
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.name }}
+         {{ form.subdistrict.name }}
+         
+        <button >Add district</button>               
+     </form>
+</div>
+    {% for district in districts %}                  
+        <ol>{{ district.name}}</ol>
+    {% endfor %}                   
+
