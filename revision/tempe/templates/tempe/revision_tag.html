@@ -120,12 +120,13 @@
         if(self.input.value){
             var district = {'name': self.input.value}
             $.post('/api/districts/', district, function(data){
+                console.log(self.districts.push(data))
                 self.districts.push(data)
                 self.input.value = ''
                 self.update()
 
             })
-            }
+        }
     }
 
 </revision>

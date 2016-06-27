@@ -19,11 +19,19 @@
         })
     })
 
+    self.on('mount', function(){
+        $.get('/api/subdistricts/', function(data){
+            self.subdistricts = data.results
+            self.update()
+        })
+    })
+
     add(e){
         if(self.input.value){
             var subdistrict = {'name': input.value, 'district': sub.value}
             console.log(sub.value)
             $.post('/api/subdistricts/', subdistrict, function(data){
+                console.log(self.subdistricts.push(data))
                 self.subdistricts.push(data)
                 self.input.value = ''
                 self.update()
