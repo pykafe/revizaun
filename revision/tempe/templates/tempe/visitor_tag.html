@@ -3,8 +3,9 @@
     <input name="visitor_name" class="form-control"  placeholder="Naran"><br/>
     <input type="input" id="input_visitor" class="form-control" placeholder="Nasionalidade"><br/>
     <select id="visitor" class="form-control">
-        <option each={parent.aldeias} value={url} selected={name}>{name}</option>
-    </select><br/>
+        <option each={parent.aldeias} value={url}>{name}</option>
+    </select>
+    <div class="visitor_log"></div><br/>
 
     <button onclick={add} class="btn btn-default">add visitor</button>
 
@@ -21,6 +22,9 @@
                 input_visitor.value = ''
                 self.parent.update()
             })
+                $(document).ajaxSuccess(function() {
+                $( ".visitor_log" ).text( "Your successfull to add visitor." );
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 <district>
 
-    <input name="district_name" class="form-control" placeholder="Distrito"><br/>
+    <input name="district_name" class="form-control" placeholder="Distrito">
+    <div class="district_log"></div><br/>
     <button onclick={add} class="btn btn-default">add District</button>
     
     var self = this
@@ -15,6 +16,9 @@
                 self.parent.update()
 
             })
+                $(document).ajaxSuccess(function() {
+                $( ".district_log" ).text( "Your successfull to add district." );
+            });
         }
     }
 </district>

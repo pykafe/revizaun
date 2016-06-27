@@ -3,7 +3,8 @@
     <input id="subdistrict_name" class="form-control"  placeholder="Subdistrito"><br/>
     <select id="sub" class="form-control" >
         <option each={ parent.districts } value={url} >{name}</option>
-    </select><br/>
+    </select>
+    <div class="success_log"></div><br/>
     <button onclick={add} class="btn btn-default">add subdistrict</button>
 
     
@@ -18,7 +19,10 @@
                 subdistrict_name.value = ''
                 self.parent.update()
             })
-            }
-         }
+                $(document).ajaxSuccess(function() {
+                $( ".success_log" ).text( "Your successfull to add subdistrict." );
+            });
+        }
+    }
 
 </subdistrict>
