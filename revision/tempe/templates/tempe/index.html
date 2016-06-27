@@ -1,5 +1,11 @@
-Hello World
-<h1>Distritu</h1>
+<html>
+    <head>
+        <title>
+            Hello World
+        </title>
+    </head>
+    <body>
+    <h1>Aldeias</h1>
     <table>
         <tr>
             <th>Aldeia</th>
@@ -16,3 +22,9 @@ Hello World
         </tr>
         {% endfor %}
     </table>
+        {% for tourist in tourists %}
+            {{ tourist.name }}
+            {{ tourist.aldeia.name }}
+        {% endfor %}
+</body>
+</html>

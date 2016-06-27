@@ -34,3 +34,11 @@ class Aldeia(models.Model):
 
     def __unicode__(self):
         return 'Aldeia {}'.format(self.name)
+
+
+class Tourist(models.Model):
+    name = models.CharField(max_length=25)
+    aldeias = models.ManyToManyField(Aldeia, related_name="tourists")
+
+    def __unicode__(self):
+        return 'Tourist {}'.format(self.name)
