@@ -1,0 +1,20 @@
+<district>
+
+    <input name="district_name" class="form-control" placeholder="Distrito"><br/>
+    <button onclick={add} class="btn btn-default">add District</button>
+    
+    var self = this
+
+  add(e){
+        console.log(self.district_name)
+        if(self.district_name.value){
+            var district = {'name': self.district_name.value}
+            $.post('/api/districts/', district, function(data){
+                self.parent.districts.push(data)
+                self.district_name.value = ''
+                self.parent.update()
+
+            })
+        }
+    }
+</district>
