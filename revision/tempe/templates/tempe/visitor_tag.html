@@ -1,37 +1,27 @@
 <visitor>
 
-    <form>
-        <input name="input" class="form-control"  placeholder="Naran"><br/>
-        <input type="input" id="input_visitor" class="form-control" placeholder="Nasionalidade"><br/>
-        <select id="visitor" class="form-control">
-            <option each={aldeias} value={url} selected={name}>{name}</option>
-        </select><br/>
+    <input name="visitor_name" class="form-control"  placeholder="Naran"><br/>
+    <input type="input" id="input_visitor" class="form-control" placeholder="Nasionalidade"><br/>
+    <select id="visitor" class="form-control">
+        <option each={parent.aldeias} value={url} selected={name}>{name}</option>
+    </select><br/>
 
-        <button onclick={add} class="btn btn-default">add visitor</button>
-    </form>
+    <button onclick={add} class="btn btn-default">add visitor</button>
 
 
     var self = this
-    self.visitors = []
-
-    self.on('mount', function(){
-        $.get('/api/aldeias/', function(data){
-            self.aldeias = data.results
-            self.update()
-        })
-    })
 
     add(e){
-        if(self.input.value){
-            var visitors = {'name': self.input.value, 'nationality': input_visitor.value, 'aldeias': visitor.value}
+        if(self.visitor_name.value){
+            var visitors = {'name': self.visitor_name.value, 'nationality': input_visitor.value, 'aldeias': visitor.value}
             console.log(visitor.value)
             $.post('/api/visitors/', visitors, function(data){
-                self.visitors.push(data)
-                self.input.value = ''
+                self.parent.visitors.push(data)
+                self.visitor_name.value = ''
                 input_visitor.value = ''
-                self.update()
+                self.parent.update()
             })
-            }
-         }
+        }
+    }
 
 </visitor>
