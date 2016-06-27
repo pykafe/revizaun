@@ -1,47 +1,45 @@
 <revision>
-    <form>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <form>
-                        <input name="input" class="form-control" placeholder="Distrito"><br/>
-                        <button onclick={add} class="btn btn-default">add District</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <subdistrict>
-                    </subdistrict>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <suco>
-                    </suco>
-                </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <form>
+                    <input name="district_name" class="form-control" placeholder="Distrito"><br/>
+                    <button onclick={add} class="btn btn-default">add District</button>
+                </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <aldeia>
-                    </aldeia>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <visitor>
-                    </visitor>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <subdistrict>
+                </subdistrict>
             </div>
         </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <suco>
+                </suco>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <aldeia>
+                </aldeia>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <visitor>
+                </visitor>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
 
-    </form>
 
 
     <h1>All Turista</h1>
@@ -80,36 +78,28 @@
     var self = this
 
     self.districts = []
+    self.subdistricts = []
+    self.sucos = []
+    self.aldeias = []
+    self.visitors = []
 
     self.on('mount', function(){
         $.get('/api/districts/', function(data){
             self.districts = data.results
             self.update()
         })
-    })
-
-    self.on('mount', function(){
         $.get('/api/subdistricts/', function(data){
             self.subdistricts = data.results
             self.update()
         })
-    })
-
-    self.on('mount', function(){
         $.get('/api/sucos/', function(data){
             self.sucos = data.results
             self.update()
         })
-    })
-
-    self.on('mount', function(){
         $.get('/api/aldeias/', function(data){
             self.aldeias = data.results
             self.update()
         })
-    })
-
-   self.on('mount', function(){
         $.get('/api/visitors/', function(data){
             self.visitors = data.results
             self.update()
@@ -117,12 +107,12 @@
     })
 
     add(e){
-        if(self.input.value){
-            var district = {'name': self.input.value}
+        console.log(self.district_name)
+        if(self.district_name.value){
+            var district = {'name': self.district_name.value}
             $.post('/api/districts/', district, function(data){
-                console.log(self.districts.push(data))
                 self.districts.push(data)
-                self.input.value = ''
+                self.district_name.value = ''
                 self.update()
 
             })

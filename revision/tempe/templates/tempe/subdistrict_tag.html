@@ -1,40 +1,22 @@
 <subdistrict>
 
-    <form>
-        <input id="input" class="form-control"  placeholder="Subdistrito"><br/>
-        <select id="sub" class="form-control" >
-            <option each={districts} value={url} selected={name}>{name}</option>
-        </select><br/>
-        <button onclick={add} class="btn btn-default">add subdistrict</button>
-    </form>
+    <input id="subdistrict_name" class="form-control"  placeholder="Subdistrito"><br/>
+    <select id="sub" class="form-control" >
+        <option each={ parent.districts } value={url} >{name}</option>
+    </select><br/>
+    <button onclick={add} class="btn btn-default">add subdistrict</button>
 
     
     var self = this
-    self.subdistricts = []
-
-    self.on('mount', function(){
-        $.get('/api/districts/', function(data){
-            self.districts = data.results
-            self.update()
-        })
-    })
-
-    self.on('mount', function(){
-        $.get('/api/subdistricts/', function(data){
-            self.subdistricts = data.results
-            self.update()
-        })
-    })
 
     add(e){
-        if(self.input.value){
-            var subdistrict = {'name': input.value, 'district': sub.value}
+        if(subdistrict_name.value){
+            var subdistrict = {'name': subdistrict_name.value, 'district': sub.value}
             console.log(sub.value)
             $.post('/api/subdistricts/', subdistrict, function(data){
-                console.log(self.subdistricts.push(data))
-                self.subdistricts.push(data)
-                self.input.value = ''
-                self.update()
+                self.parent.subdistricts.push(data)
+                subdistrict_name.value = ''
+                self.parent.update()
             })
             }
          }

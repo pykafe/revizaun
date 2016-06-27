@@ -1,13 +1,11 @@
 <suco>
 
-    <form>
-        <input name="input" class="form-control" placeholder="Suco"><br/>
-        <select id="suku" class="form-control">
-            <option each={subdistricts} value={url} selected={name}>{name}</option>
-        </select><br/>
+    <input name="input" class="form-control" placeholder="Suco"><br/>
+    <select id="suku" class="form-control">
+        <option each={subdistricts} value={url} selected={name}>{name}</option>
+    </select><br/>
 
-        <button onclick={add} class="btn btn-default">add suco</button>
-    </form>
+    <button onclick={add} class="btn btn-default">add suco</button>
 
 
     var self = this
