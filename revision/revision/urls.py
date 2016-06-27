@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from tempe.views import Index, DistrictViewSet, SubDistrictViewSet, SucoViewSet, AldeiaViewSet, TouristViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'districts', DistrictViewSet)
+router.register(r'sudistricts', SubDistrictViewSet)
+router.register(r'sucos', SucoViewSet)
+router.register(r'aldeias', AldeiaViewSet)
+router.register(r'tourists', TouristViewSet)
 
 urlpatterns = [
     url(r'^', include('tempe.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
