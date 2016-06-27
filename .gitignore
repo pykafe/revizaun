@@ -92,4 +92,4 @@ ENV/
 db.sqlite3
 
 # exclude Bower_Components
-bower_components 
+bower_components/ 
