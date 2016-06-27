@@ -23,7 +23,7 @@
                     <td>{{ aldeia.suco.subdistrict.name }}</td>
                     <td>{{ aldeia.suco.subdistrict.district.name }}</td>
                     <td>
-                        {% for tourist in tourists %}
+                        {% for tourist in aldeia.tourists.all %}
                         <ul>
                             {{ tourist.name }}
                         </ul>
