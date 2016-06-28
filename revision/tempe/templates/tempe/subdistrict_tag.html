@@ -1,15 +1,19 @@
 <subdistrict>
 
-    <input id="subdistrict_name" class="form-control"  placeholder="Subdistrito"><br/>
+    <input id="subdistrict_name" class="form-control" onkeyup={add_subdistrict}  placeholder="Subdistrito"><br/>
     <select id="sub" class="form-control" >
         <option each={ parent.districts } value={url} >{name}</option>
     </select>
     <div class="subdistrict_log"></div>
     <div class="subdistrict_error_log"></div><br/>
-    <button onclick={add} class="btn btn-default">add subdistrict</button>
+    <button onclick={add} disabled={ !text } class="btn btn-default">add subdistrict</button>
 
     
     var self = this
+
+    add_subdistrict(e){
+        self.text = e.target.value
+    }
 
     add(e){
         if(subdistrict_name.value){

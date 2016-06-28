@@ -1,26 +1,31 @@
 <visitor>
 
-    <input name="visitor_name" class="form-control"  placeholder="Naran"><br/>
-    <input type="input" id="input_visitor" class="form-control" placeholder="Nasionalidade"><br/>
+    <input name="visitor_name" class="form-control" placeholder="Naran"><br/>
+    <input type="input" id="nationality_name" onkeyup={add_visitor} class="form-control" placeholder="Nasionalidade"><br/>
     <select id="visitor" class="form-control">
         <option each={parent.aldeias} value={url}>{name}</option>
     </select>
     <div class="visitor_log"></div><br/>
     <div class="visitor_error_log"></div><br/>
 
-    <button onclick={add} class="btn btn-default">add visitor</button>
+    <button onclick={add} disabled={!text} class="btn btn-default">add visitor</button>
 
 
     var self = this
 
+    add_visitor(e){
+        self.text = e.target.value
+    }
+
+
     add(e){
         if(self.visitor_name.value){
-            var visitors = {'name': self.visitor_name.value, 'nationality': input_visitor.value, 'aldeias': visitor.value}
+            var visitors = {'name': self.visitor_name.value, 'nationality': nationality_name.value, 'aldeias': visitor.value}
             console.log(visitor.value)
             $.post('/api/visitors/', visitors, function(data){
                 self.parent.visitors.push(data)
                 self.visitor_name.value = ''
-                input_visitor.value = ''
+                nationality_name.value = ''
                 self.parent.update()
             })
                 $(document).ajaxSuccess(function() {

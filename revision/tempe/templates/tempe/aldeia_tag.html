@@ -1,16 +1,20 @@
 <aldeia>
 
-    <input name="aldeia_name" class="form-control" placeholder="Aldeia"><br/>
+    <input name="aldeia_name" class="form-control" onkeyup={add_aldeia} placeholder="Aldeia"><br/>
     <select id="aldeia" class="form-control">
         <option each={parent.sucos} value={url}>{name}</option>
     </select>
     <div class="aldeia_log"></div>
     <div class="aldeia_error_log"></div><br/>
 
-    <button onclick={add} class="btn btn-default">add aldeia</button>
+    <button onclick={add} disabled={ !text } class="btn btn-default">add aldeia</button>
 
 
     var self = this
+
+    add_aldeia(e){
+        self.text = e.target.value
+    }
 
     add(e){
         if(self.aldeia_name.value){

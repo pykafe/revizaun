@@ -1,13 +1,17 @@
 <district>
 
-    <input name="district_name" class="form-control" placeholder="Distrito">
+    <input name="district_name" class="form-control" placeholder="Distrito" onkeyup={add_district}>
     <div class="district_log"></div>
     <div class="district_error_log"></div><br/>
-    <button onclick={add} class="btn btn-default">add District</button>
+    <button onclick={add} disabled={ !text } class="btn btn-default">add District</button>
     
     var self = this
 
-  add(e){
+    add_district(e){
+        self.text = e.target.value
+    }
+
+    add(e){
         console.log(self.district_name)
         if(self.district_name.value){
             var district = {'name': self.district_name.value}

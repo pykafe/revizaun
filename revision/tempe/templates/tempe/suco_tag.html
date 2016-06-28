@@ -1,16 +1,20 @@
 <suco>
 
-    <input name="suco_name" class="form-control" placeholder="Suco"><br/>
+    <input name="suco_name" class="form-control" onkeyup={add_suco} placeholder="Suco"><br/>
     <select id="suku" class="form-control">
         <option each={parent.subdistricts} value={url}>{name}</option>
     </select>
     <div class="suco_log"></div>
     <div class="suco_error_log"></div><br/>
 
-    <button onclick={add} class="btn btn-default">add suco</button>
+    <button onclick={add} disabled={ !text } class="btn btn-default">add suco</button>
 
 
     var self = this
+
+    add_suco(e){
+        self.text = e.target.value
+    }
 
     add(e){
         if(self.suco_name.value){
