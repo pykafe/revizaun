@@ -1,7 +1,8 @@
 <district>
 
     <input name="district_name" class="form-control" placeholder="Distrito">
-    <div class="district_log"></div><br/>
+    <div class="district_log"></div>
+    <div class="district_error_log"></div><br/>
     <button onclick={add} class="btn btn-default">add District</button>
     
     var self = this
@@ -17,7 +18,10 @@
 
             })
                 $(document).ajaxSuccess(function() {
-                $( ".district_log" ).text( "Your successfull to add district." );
+                $( ".district_log" ).text( "You are successfull to add district." );
+            });
+                $( document ).ajaxError(function() {
+                $( ".district_error_log" ).text( "You aren't successfull to add district." );
             });
         }
     }

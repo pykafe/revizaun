@@ -6,6 +6,7 @@
         <option each={parent.aldeias} value={url}>{name}</option>
     </select>
     <div class="visitor_log"></div><br/>
+    <div class="visitor_error_log"></div><br/>
 
     <button onclick={add} class="btn btn-default">add visitor</button>
 
@@ -23,7 +24,10 @@
                 self.parent.update()
             })
                 $(document).ajaxSuccess(function() {
-                $( ".visitor_log" ).text( "Your successfull to add visitor." );
+                $( ".visitor_log" ).text( "You are successfull to add visitor." );
+            });
+                $( document ).ajaxError(function() {
+                $( ".visitor_error_log" ).text( "You aren't successfull to add visitor." );
             });
         }
     }

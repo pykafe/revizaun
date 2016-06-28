@@ -4,7 +4,8 @@
     <select id="sub" class="form-control" >
         <option each={ parent.districts } value={url} >{name}</option>
     </select>
-    <div class="subdistrict_log"></div><br/>
+    <div class="subdistrict_log"></div>
+    <div class="subdistrict_error_log"></div><br/>
     <button onclick={add} class="btn btn-default">add subdistrict</button>
 
     
@@ -20,7 +21,10 @@
                 self.parent.update()
             })
                 $(document).ajaxSuccess(function() {
-                $( ".subdistrict_log" ).text( "Your successfull to add subdistrict." );
+                $( ".subdistrict_log" ).text( "You are successfull to add subdistrict." );
+            });
+                $( document ).ajaxError(function() {
+                $( ".subdistrict_error_log" ).text( "You aren't successfull to add subdistrict." );
             });
         }
     }

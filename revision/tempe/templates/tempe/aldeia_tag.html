@@ -4,7 +4,8 @@
     <select id="aldeia" class="form-control">
         <option each={parent.sucos} value={url}>{name}</option>
     </select>
-    <div class="aldeia_log"></div><br/>
+    <div class="aldeia_log"></div>
+    <div class="aldeia_error_log"></div><br/>
 
     <button onclick={add} class="btn btn-default">add aldeia</button>
 
@@ -21,7 +22,10 @@
                 self.parent.update()
             })
                 $(document).ajaxSuccess(function() {
-                $( ".aldeia_log" ).text( "Your successfull to add aldeia." );
+                $( ".aldeia_log" ).text( "Your are successfull to add aldeia." );
+            });
+                $( document ).ajaxError(function() {
+                $( ".aldeia_error_log" ).text( "You aren't successfull to add aldeia." );
             });
         }
     }
