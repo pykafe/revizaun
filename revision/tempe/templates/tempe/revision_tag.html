@@ -83,28 +83,17 @@
 
     self.on('mount', function(){
         RiotControl.trigger('district_please')
+    })
 
-    
-        $.get('/api/districts/', function(data){
-            self.districts = data.results
-            self.update()
-        })
-        $.get('/api/subdistricts/', function(data){
-            self.subdistricts = data.results
-            self.update()
-        })
-        $.get('/api/sucos/', function(data){
-            self.sucos = data.results
-            self.update()
-        })
-        $.get('/api/aldeias/', function(data){
-            self.aldeias = data.results
-            self.update()
-        })
-        $.get('/api/visitors/', function(data){
-            self.visitors = data.results
-            self.update()
-        })
+    RiotControl.on('districts', function(districts){
+        console.log('district heard by tag')
+        console.log(districts)
+        self.districts = districts.districts 
+        self.subdistricts = districts.subdistricts 
+        self.aldeias = districts.aldeias 
+        self.sucos = districts.sucos 
+        self.visitors = districts.visitors 
+        self.update()
     })
 
 </revision>

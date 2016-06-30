@@ -7,17 +7,6 @@ from .serializers import DistrictSerializer, SubdistrictSerializer, SucoSerializ
 class Index(TemplateView):
     template_name = 'tempe/index.html'
 
-    def get_context_data(self, *args, **kwargs):
-        ''' Add a list of subcategories by category to the context '''
-
-        context = super(Index, self).get_context_data(*args, **kwargs)
-        context['districts'] = District.objects.all()
-        context['subdistricts'] = SubDistrict.objects.all()
-        context['sucos'] = Suco.objects.all()
-        context['aldeias'] = Aldeia.objects.all()
-        context['visitors'] = Visitor.objects.all()
-        return context
-
 
 class DistrictViewSet(viewsets.ModelViewSet):
     """

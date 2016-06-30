@@ -8,39 +8,6 @@
     <body>
         <div class="container">
 
-            <h1>Tourist</h1>
-
-            <table class="table table-condensed">
-                <tr>
-                    <td><b>Aldeia</b></td>
-                    <td><b>Suku</b></td>
-                    <td><b>Sub-Distrito</b></td>
-                    <td><b>Distrito</b></td>
-                    <td><b>Nasionalidade</b></td>
-                    <td><b>Visitor</b></td>
-                </tr>
-                {% for aldeia in aldeias %}
-                    <tr>
-                        <td> {{ aldeia.name }} </td>
-                        <td> {{ aldeia.suco.name }} </td>
-                        <td> {{ aldeia.suco.subdistrict.name }} </td>
-                        <td> {{ aldeia.suco.subdistrict.district.name }} </td>
-                        <td>
-                            {% for visitor in aldeia.visitors.all %}
-                                {{visitor.nationality}}<br>
-                            {%endfor%}   
-                        </td>
-                            <td>
-                            {% for visitor in aldeia.visitors.all %}
-                               {{visitor.name}}<br>
-                            {%endfor%}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
-            
-            <h1>Add Tourist</h1>
-
             <revision></revision>
 
             <script type='riot/tag'>{% include 'tempe/revision_tag.html' %}</script>
