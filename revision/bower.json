@@ -18,7 +18,8 @@
   "dependencies": {
     "jquery": "^3.0.0",
     "riot": "^2.4.1",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "RiotControl": "riotcontrol#*"
   },
   "resolutions": {
     "jquery": "1.9.1 - 2"
