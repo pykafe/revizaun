@@ -1,3 +1,4 @@
+{% load static %}
 <html>
     <head>
         <title>
@@ -5,26 +6,14 @@
         </title>
     </head>
     <body>
-    <h1>Aldeias</h1>
-    <table>
-        <tr>
-            <th>Aldeia</th>
-            <th>Suco</th>
-            <th>Sub-Distritu</th>
-            <th>Distritu</th>
-        </tr>
-        {% for aldeia in aldeias %}
-        <tr>
-            <td>{{ aldeia.name }}</td>
-            <td>{{ aldeia.suco.name }}</td>
-            <td>{{ aldeia.suco.subdistrict.name }}</td>
-            <td>{{ aldeia.suco.subdistrict.district.name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-        {% for tourist in tourists %}
-            {{ tourist.name }}
-            {{ tourist.aldeia.name }}
-        {% endfor %}
-</body>
+        <district></district>
+
+        <script src="{% static 'district.tag' %}" type="riot/tag"></script>
+        <script src="{% static 'riot/riot+compiler.min.js' %}"></script>
+        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+
+        <script>
+            riot.mount('district')
+        </script>
+    </body>
 </html>
