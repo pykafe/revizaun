@@ -82,6 +82,9 @@
     self.visitors = []
 
     self.on('mount', function(){
+        RiotControl.trigger('district_please')
+
+    
         $.get('/api/districts/', function(data){
             self.districts = data.results
             self.update()
