@@ -1,0 +1,23 @@
+{
+  "name": "revision",
+  "homepage": "https://github.com/pykafe/revizaun",
+  "authors": [
+    "Nando <nando22alia@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "riot": "^2.4.1",
+    "bootstrap": "^3.3.6",
+    "RiotControl": "riotcontrol#*"
+  }
+}

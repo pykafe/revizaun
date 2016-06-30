@@ -1,16 +1,26 @@
-Hello World
-<h1>Distritu</h1>
-{% for district in districts %}
-<div>
-    {{ district.name }}
-    ({{ district.subdistrict_set.count }} subdistricts )
-</div>
-{% endfor %}
+{% load static %}
+<html>
+    <head>
+        <title></title>
+        <link type="text/css" rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Distritu</h1>
+            {% for district in districts %}
+            <div>
+                {{ district.name }}
+                ({{ district.subdistrict_set.count }} subdistricts )
+            </div>
+            {% endfor %}
 
-<h1>SubDistritu</h1>
-{% for subdistrict in subdistricts %}
-<div>
-    {{ subdistrict.name }}
-    ({{ subdistrict.district.name }})
-</div>
-{% endfor %}
+            <h1>SubDistritu</h1>
+            {% for subdistrict in subdistricts %}
+            <div>
+                {{ subdistrict.name }}
+                ({{ subdistrict.district.name }})
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

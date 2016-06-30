@@ -89,4 +89,7 @@ ENV/
 .ropeproject
 
 # sqlite.db
-db.sqlite3 
+db.sqlite3
+
+# bower
+bower_components/
