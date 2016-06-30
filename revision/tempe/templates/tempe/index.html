@@ -6,21 +6,21 @@
     </head>
     <body>
         <div class="container">
-            <h1>Distritu</h1>
-            {% for district in districts %}
-            <div>
-                {{ district.name }}
-                ({{ district.subdistrict_set.count }} subdistricts )
-            </div>
-            {% endfor %}
-
-            <h1>SubDistritu</h1>
-            {% for subdistrict in subdistricts %}
-            <div>
-                {{ subdistrict.name }}
-                ({{ subdistrict.district.name }})
-            </div>
-            {% endfor %}
+            <districts>
+            </districts>
         </div>
+
+        <script src="{% static 'riot/riot+compiler.min.js' %}"></script>
+        <script src="{% static 'RiotControl/riotcontrol.js' %}"></script>
+        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+
+        <script src="{% static 'js/district_store.js' %}"></script>
+        <script type="riot/tag">{% include 'tempe/riot/districts.tag' %}</script>
+
+        <script>
+            RiotControl.addStore(new DistrictStore());
+
+            riot.mount('districts')
+        </script>
     </body>
 </html>
