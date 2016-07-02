@@ -12,21 +12,19 @@
     }
 
     add(e){
-        console.log(self.district_name)
         if(self.district_name.value){
-            var district = {'name': self.district_name.value}
-            $.post('/api/districts/', district, function(data){
-                self.parent.districts.push(data)
-                self.district_name.value = ''
-                self.parent.update()
-
-            })
-                $(document).ajaxSuccess(function() {
-                $( ".district_log" ).text( "You are successfull to add district." );
-            });
-                $( document ).ajaxError(function() {
-                $( ".district_error_log" ).text( "You aren't successfull to add district." );
-            });
+            var district_add = {'name': self.district_name.value}
+            RiotControl.trigger('add_districts', district_add)
+            self.parent.districts.push(district_add)
+            self.district_name.value = ''
+            self.parent.update()
         }
     }
+
+    RiotControl.on('change_add', function(districts){
+        debugger;
+        self.parent.districts = districts
+        self.parent.update()
+    })
+
 </district>

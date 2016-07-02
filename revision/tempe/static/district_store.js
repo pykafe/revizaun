@@ -2,9 +2,10 @@ function DistrictStore() {
 
     var self = this;
 
-    riot.observable(self)
+    riot.observable(this)
 
     self.get_requests = 0
+
 
     self.on('district_please', function(){
         console.log('district_please has been heard by another store');
@@ -63,4 +64,5 @@ function DistrictStore() {
             console.log("Seidauk");
         }
     }
+
 }

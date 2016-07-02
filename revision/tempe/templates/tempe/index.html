@@ -20,9 +20,11 @@
             <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
             <script src="{% static 'RiotControl/riotcontrol.js' %}"></script>
             <script src="{% static 'district_store.js' %}"></script>
+            <script src="{% static 'alldistrict_store.js' %}"></script>
 
             <script>
                 RiotControl.addStore(new DistrictStore());
+                RiotControl.addStore(new AlldistrictStore());
                 riot.mount('revision')
             </script>
         </div>
